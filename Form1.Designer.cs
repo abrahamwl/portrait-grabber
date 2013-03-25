@@ -59,6 +59,7 @@ namespace ImgNow
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.Color.Red;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

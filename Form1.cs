@@ -14,8 +14,8 @@ namespace ImgNow
         public bool LeftButtonDown = false;
 
         public Point ClickPoint = new Point();
-        public Point CurrentTopLeft = new Point();
-        public Point CurrentBottomRight = new Point();
+        public Point CurrentTopLeft = new Point(0, 0);
+        public Point CurrentBottomRight = new Point(-1, -1);
         int relativeX = 0, relativeY = 0;
 
         Graphics g;
@@ -41,7 +41,7 @@ namespace ImgNow
         #endregion
 
         #region:::::::::::::::::::::::::::::::::::::::::::Mouse Event Handlers & Drawing Initialization:::::::::::::::::::::::::::::::::::::::::::
-        public Form1()
+        public Form1(ControlPanel cp)
         {
 
             InitializeComponent();
@@ -52,6 +52,7 @@ namespace ImgNow
             this.MouseDown += new MouseEventHandler(mouse_Click);
             this.MouseUp += new MouseEventHandler(mouse_Up);
             this.MouseMove += new MouseEventHandler(mouse_Move);
+            InstanceRef = cp;
             g = this.CreateGraphics();
         }
 
@@ -96,6 +97,19 @@ namespace ImgNow
         {
             if (e.Button != MouseButtons.Left)
                 return;
+            capture();
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13 || e.KeyChar == ' ')
+            {
+                capture();
+            }
+        }
+
+        private void capture()
+        {
             LeftButtonDown = false;
             if (!System.IO.Directory.Exists(InstanceRef.portraitPath))
             {
@@ -110,6 +124,10 @@ namespace ImgNow
             if ((InstanceRef.portraitType & 1) == 1)
             {
                 notifyText += " " + InstanceRef.fileName + "L.bmp";
+            }
+            if ((InstanceRef.portraitType & 4) == 4)
+            {
+                notifyText += " " + InstanceRef.fileName + "M.bmp";
             }
             if ((InstanceRef.portraitType & 2) == 2)
             {
@@ -228,7 +246,12 @@ namespace ImgNow
             {
                 ScreenShot.CaptureImage(CurrentBottomRight.X >= this.Width, CurrentBottomRight.Y >= this.Height, bounds, InstanceRef.portraitPath + "\\" + InstanceRef.fileName + "S.bmp", InstanceRef.sW, InstanceRef.sH);
             }
+            if ((InstanceRef.portraitType & 4) == 4)
+            {
+                ScreenShot.CaptureImage(CurrentBottomRight.X >= this.Width, CurrentBottomRight.Y >= this.Height, bounds, InstanceRef.portraitPath + "\\" + InstanceRef.fileName + "M.bmp", InstanceRef.mW, InstanceRef.mH);
+            }
         }
         #endregion
+
     }
 }

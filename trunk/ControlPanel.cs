@@ -5,6 +5,7 @@ using System.Windows.Forms.VisualStyles;
 using System.Net;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace ImgNow
 {
@@ -14,11 +15,12 @@ namespace ImgNow
         public string portraitPath;
         public string fileName = "filname";
         public int portraitType = 1;
-        public int lW = 110, lH = 170, sW = 38, sH = 60;
+        public int lW = 210, lH = 330, sW = 54, sH = 84, mW = 169, mH = 266;
+        public int sLW = 110, sLH = 170, sSW = 38, sSH = 60;
         public bool forceRatio = true;
         private Form m_InstanceRef = null;
-        Form1 form1 = new Form1();       
-        
+        Form1 form1;
+
         public Form InstanceRef
         {
             get
@@ -34,9 +36,10 @@ namespace ImgNow
         public ControlPanel()
         {
             InitializeComponent();
+            this.Text = this.AssemblyTitle + " v" + this.AssemblyVersion;
             this.Resize += new EventHandler(ControlPanel_Resize);
             this.InstanceRef = this;
-            form1.InstanceRef = this;
+            form1 = new Form1(this);
 
             selectFolder();
         }
@@ -120,6 +123,15 @@ namespace ImgNow
             sH = Convert.ToInt16(textSmallHeight.Text);
         }
 
+        private void textMediumWidth_TextChanged(object sender, EventArgs e)
+        {
+            mW = Convert.ToInt16(textMediumWidth.Text);
+        }
+
+        private void textMediumHeight_TextChanged(object sender, EventArgs e)
+        {
+            mH = Convert.ToInt16(textMediumHeight.Text);
+        }
         private void bttCaptureLarge_Click(object sender, EventArgs e)
         {
             portraitType = 1;
@@ -131,9 +143,22 @@ namespace ImgNow
             capturePortrait();
         }
 
-        private void bttCaptureBoth_Click(object sender, EventArgs e)
+        private void bttCaptureMedium_Click(object sender, EventArgs e)
         {
-            portraitType = 3;
+            portraitType = 4;
+            capturePortrait();
+        }
+
+        private void bttCaptureAll_Click(object sender, EventArgs e)
+        {
+            if (checkBGEE.Enabled)
+            {
+                portraitType = 7;
+            }
+            else
+            {
+                portraitType = 3;
+            }
             capturePortrait();
         }
 
@@ -143,6 +168,10 @@ namespace ImgNow
             form1.WindowState = FormWindowState.Maximized;
             form1.BringToFront();
             form1.TopMost = true;
+            if (form1.CurrentBottomRight.X < 0)
+            {
+                form1.CurrentBottomRight = new Point(lW, lH);
+            }
             form1.Show();
         }
 
@@ -179,6 +208,42 @@ namespace ImgNow
         {
             textName.SelectAll();
             textName.Focus();
+        }
+
+        private void checkBGEE_CheckedChanged(object sender, EventArgs e)
+        {
+            int temp;
+            temp = lW;
+            lW = sLW;
+            sLW = temp;
+            textLargeWidth.Text = lW.ToString();
+            temp = lH;
+            lH = sLH;
+            sLH = temp;
+            textLargeHeight.Text = lH.ToString();
+            temp = sW;
+            sW = sSW;
+            sSW = temp;
+            textSmallWidth.Text = sW.ToString();
+            temp = sH;
+            sH = sSH;
+            sSH = temp;
+            textSmallHeight.Text = sH.ToString();
+
+            if (checkBGEE.CheckState == CheckState.Checked)
+            {
+                bttCaptureMedium.Enabled = true;
+                groupMedium.Enabled = true;
+                textMediumWidth.Enabled = true;
+                textMediumHeight.Enabled = true;
+            }
+            else
+            {
+                bttCaptureMedium.Enabled = false;
+                groupMedium.Enabled = false;
+                textMediumWidth.Enabled = false;
+                textMediumHeight.Enabled = false;
+            }
         }
     }
 }

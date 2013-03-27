@@ -226,7 +226,7 @@ namespace ImgNow
             // 
             this.groupSmall.Controls.Add(this.textSmallHeight);
             this.groupSmall.Controls.Add(this.textSmallWidth);
-            this.groupSmall.Location = new System.Drawing.Point(0, 45);
+            this.groupSmall.Location = new System.Drawing.Point(0, 87);
             this.groupSmall.Name = "groupSmall";
             this.groupSmall.Size = new System.Drawing.Size(107, 42);
             this.groupSmall.TabIndex = 6;
@@ -297,8 +297,8 @@ namespace ImgNow
             // 
             this.tabSettings.Controls.Add(this.checkBGEE);
             this.tabSettings.Controls.Add(this.groupLarge);
-            this.tabSettings.Controls.Add(this.groupMedium);
             this.tabSettings.Controls.Add(this.groupSmall);
+            this.tabSettings.Controls.Add(this.groupMedium);
             this.tabSettings.Location = new System.Drawing.Point(4, 22);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
@@ -324,7 +324,7 @@ namespace ImgNow
             // 
             this.groupMedium.Controls.Add(this.textMediumHeight);
             this.groupMedium.Controls.Add(this.textMediumWidth);
-            this.groupMedium.Location = new System.Drawing.Point(0, 87);
+            this.groupMedium.Location = new System.Drawing.Point(0, 45);
             this.groupMedium.Name = "groupMedium";
             this.groupMedium.Size = new System.Drawing.Size(107, 42);
             this.groupMedium.TabIndex = 6;
@@ -385,7 +385,7 @@ namespace ImgNow
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(140, 328);
+            this.ClientSize = new System.Drawing.Size(137, 328);
             this.ControlBox = false;
             this.Controls.Add(this.bttExit);
             this.Controls.Add(this.tabControl1);

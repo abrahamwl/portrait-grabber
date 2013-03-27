@@ -53,20 +53,20 @@ namespace ImgNow
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.bttSelectFolder = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabCapture = new System.Windows.Forms.TabPage();
-            this.bttCaptureAll = new System.Windows.Forms.Button();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.checkBGEE = new System.Windows.Forms.CheckBox();
             this.groupMedium = new System.Windows.Forms.GroupBox();
             this.textMediumHeight = new System.Windows.Forms.TextBox();
             this.textMediumWidth = new System.Windows.Forms.TextBox();
+            this.tabCapture = new System.Windows.Forms.TabPage();
+            this.bttCaptureAll = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.groupLarge.SuspendLayout();
             this.groupSmall.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabCapture.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.groupMedium.SuspendLayout();
+            this.tabCapture.SuspendLayout();
             this.SuspendLayout();
             // 
             // bttCaptureLarge
@@ -293,35 +293,6 @@ namespace ImgNow
             this.tabControl1.Size = new System.Drawing.Size(115, 182);
             this.tabControl1.TabIndex = 9;
             // 
-            // tabCapture
-            // 
-            this.tabCapture.Controls.Add(this.bttCaptureSmall);
-            this.tabCapture.Controls.Add(this.bttCaptureAll);
-            this.tabCapture.Controls.Add(this.bttCaptureMedium);
-            this.tabCapture.Controls.Add(this.bttCaptureLarge);
-            this.tabCapture.Location = new System.Drawing.Point(4, 22);
-            this.tabCapture.Name = "tabCapture";
-            this.tabCapture.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCapture.Size = new System.Drawing.Size(107, 156);
-            this.tabCapture.TabIndex = 0;
-            this.tabCapture.Text = "Capture";
-            this.tabCapture.UseVisualStyleBackColor = true;
-            // 
-            // bttCaptureAll
-            // 
-            this.bttCaptureAll.BackColor = System.Drawing.Color.Gainsboro;
-            this.bttCaptureAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttCaptureAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttCaptureAll.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bttCaptureAll.Location = new System.Drawing.Point(0, 120);
-            this.bttCaptureAll.Name = "bttCaptureAll";
-            this.bttCaptureAll.Size = new System.Drawing.Size(107, 32);
-            this.bttCaptureAll.TabIndex = 2;
-            this.bttCaptureAll.TabStop = false;
-            this.bttCaptureAll.Text = "Capture All";
-            this.bttCaptureAll.UseVisualStyleBackColor = false;
-            this.bttCaptureAll.Click += new System.EventHandler(this.bttCaptureAll_Click);
-            // 
             // tabSettings
             // 
             this.tabSettings.Controls.Add(this.checkBGEE);
@@ -368,7 +339,7 @@ namespace ImgNow
             this.textMediumHeight.Size = new System.Drawing.Size(50, 20);
             this.textMediumHeight.TabIndex = 0;
             this.textMediumHeight.Text = "266";
-            this.textMediumHeight.TextChanged += new System.EventHandler(this.textSmallHeight_TextChanged);
+            this.textMediumHeight.TextChanged += new System.EventHandler(this.textMediumHeight_TextChanged);
             // 
             // textMediumWidth
             // 
@@ -378,7 +349,36 @@ namespace ImgNow
             this.textMediumWidth.Size = new System.Drawing.Size(50, 20);
             this.textMediumWidth.TabIndex = 0;
             this.textMediumWidth.Text = "169";
-            this.textMediumWidth.TextChanged += new System.EventHandler(this.textSmallWidth_TextChanged);
+            this.textMediumWidth.TextChanged += new System.EventHandler(this.textMediumWidth_TextChanged);
+            // 
+            // tabCapture
+            // 
+            this.tabCapture.Controls.Add(this.bttCaptureSmall);
+            this.tabCapture.Controls.Add(this.bttCaptureAll);
+            this.tabCapture.Controls.Add(this.bttCaptureMedium);
+            this.tabCapture.Controls.Add(this.bttCaptureLarge);
+            this.tabCapture.Location = new System.Drawing.Point(4, 22);
+            this.tabCapture.Name = "tabCapture";
+            this.tabCapture.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCapture.Size = new System.Drawing.Size(107, 156);
+            this.tabCapture.TabIndex = 0;
+            this.tabCapture.Text = "Capture";
+            this.tabCapture.UseVisualStyleBackColor = true;
+            // 
+            // bttCaptureAll
+            // 
+            this.bttCaptureAll.BackColor = System.Drawing.Color.Gainsboro;
+            this.bttCaptureAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttCaptureAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttCaptureAll.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bttCaptureAll.Location = new System.Drawing.Point(0, 120);
+            this.bttCaptureAll.Name = "bttCaptureAll";
+            this.bttCaptureAll.Size = new System.Drawing.Size(107, 32);
+            this.bttCaptureAll.TabIndex = 2;
+            this.bttCaptureAll.TabStop = false;
+            this.bttCaptureAll.Text = "Capture All";
+            this.bttCaptureAll.UseVisualStyleBackColor = false;
+            this.bttCaptureAll.Click += new System.EventHandler(this.bttCaptureAll_Click);
             // 
             // ControlPanel
             // 
@@ -408,11 +408,11 @@ namespace ImgNow
             this.groupSmall.ResumeLayout(false);
             this.groupSmall.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabCapture.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.tabSettings.PerformLayout();
             this.groupMedium.ResumeLayout(false);
             this.groupMedium.PerformLayout();
+            this.tabCapture.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

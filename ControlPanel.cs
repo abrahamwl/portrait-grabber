@@ -105,33 +105,88 @@ namespace ImgNow
 
         private void textLargeWidth_TextChanged(object sender, EventArgs e)
         {
-            lW = Convert.ToInt16(textLargeWidth.Text);
+            int temp;
+            try
+            {
+                temp = Convert.ToInt16(textLargeWidth.Text);
+            }
+            catch (System.FormatException)
+            {
+                return;
+            }
+            lW = temp;
         }
 
         private void textLargeHeight_TextChanged(object sender, EventArgs e)
         {
-            lH = Convert.ToInt16(textLargeHeight.Text);
+            int temp;
+            try
+            {
+                temp = Convert.ToInt16(textLargeHeight.Text);
+            }
+            catch (System.FormatException)
+            {
+                return;
+            }
+            lH = temp;
         }
 
         private void textSmallWidth_TextChanged(object sender, EventArgs e)
         {
-            sW = Convert.ToInt16(textSmallWidth.Text);
+            int temp;
+            try
+            {
+                temp = Convert.ToInt16(textSmallWidth.Text);
+            }
+            catch (System.FormatException)
+            {
+                return;
+            }
+            sW = temp;
         }
 
         private void textSmallHeight_TextChanged(object sender, EventArgs e)
         {
-            sH = Convert.ToInt16(textSmallHeight.Text);
+            int temp;
+            try
+            {
+                temp = Convert.ToInt16(textSmallHeight.Text);
+            }
+            catch (System.FormatException)
+            {
+                return;
+            }
+            sH = temp;
         }
 
         private void textMediumWidth_TextChanged(object sender, EventArgs e)
         {
-            mW = Convert.ToInt16(textMediumWidth.Text);
+            int temp;
+            try
+            {
+                temp = Convert.ToInt16(textMediumWidth.Text);
+            }
+            catch (System.FormatException)
+            {
+                return;
+            }
+            mW = temp;
         }
 
         private void textMediumHeight_TextChanged(object sender, EventArgs e)
         {
-            mH = Convert.ToInt16(textMediumHeight.Text);
+            int temp;
+            try
+            {
+                temp = Convert.ToInt16(textMediumHeight.Text);
+            }
+            catch (System.FormatException)
+            {
+                return;
+            }
+            mH = temp;
         }
+
         private void bttCaptureLarge_Click(object sender, EventArgs e)
         {
             portraitType = 1;
